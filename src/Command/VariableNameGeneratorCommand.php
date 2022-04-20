@@ -48,7 +48,7 @@ final class VariableNameGeneratorCommand extends Command
 
         $output->writeln('Here are some variables:');
         $output->writeln('');
-        
+
         for ($i = 0; $i < $variableCount; $i++) {
             $words = $lipsum->getWords($wordCount);
             $output->writeln($this->formatCase($words, $case));
