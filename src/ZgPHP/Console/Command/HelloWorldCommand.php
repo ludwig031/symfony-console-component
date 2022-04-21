@@ -17,10 +17,10 @@ final class HelloWorldCommand extends Command
         $this->setDescription('Outputs "Hello World"');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Hello World');
 
-        return 0;
+        return Command::SUCCESS;
     }
 }
