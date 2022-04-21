@@ -26,14 +26,14 @@ final class CreateUserCommand  extends Command
         $questionHelper = $this->getHelper('question');
         $formatter = $this->getHelper('formatter');
 
-        $question = new Question('Please enter the username: ', 'user' . rand());
+        $question = new Question("<question>Please enter the username:</question> ", 'user' . rand());
 
         $username = $questionHelper->ask($input, $output, $question);
 
-        $question = new Question('Please enter your password: ');
+        $question = new Question("<question>Please enter your password:</question> ");
         $question->setValidator(function ($value) {
             if ($value == null || $value == '') {
-                throw new \Exception('The password cannot be empty');
+                throw new \Exception("<error>The password cannot be empty</error>");
             }
 
             return $value;
@@ -44,7 +44,7 @@ final class CreateUserCommand  extends Command
         $password = $questionHelper->ask($input, $output, $question);
 
         $question = new ChoiceQuestion(
-            'Please select gender ',
+            "<question>Please select gender:</question> ",
             // choices can also be PHP objects that implement __toString() method
             ['F', 'M', 'none'],
             0
@@ -53,12 +53,12 @@ final class CreateUserCommand  extends Command
         $gender = $questionHelper->ask($input, $output, $question);
 
         $cities = ['Osijek', 'Zagreb', 'Split', 'Rijeka'];
-        $question = new Question('Please enter user city: ', 'Zagreb');
+        $question = new Question("<question>Please enter user city:</question> ", 'Zagreb');
         $question->setAutocompleterValues($cities);
 
         $city = $questionHelper->ask($input, $output, $question);
 
-        $question = new ConfirmationQuestion('Continue with user creation? ', false);
+        $question = new ConfirmationQuestion("Continue with user creation? [<info>y</info>/<comment>N</comment>] ", false);
 
         if (!$questionHelper->ask($input, $output, $question)) {
             $errorMessages = ['', 'User not created', ''];
