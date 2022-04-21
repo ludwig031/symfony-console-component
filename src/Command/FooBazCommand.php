@@ -20,7 +20,7 @@ final class FooBazCommand extends Command
 {
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln('Hello World');
+        $output->writeln('Foo Baz (or Baz Foo)');
 
         return Command::SUCCESS;
     }

@@ -21,7 +21,7 @@ final class FooBarCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln('Hello World');
+        $output->writeln('Foo Bar');
 
         return Command::SUCCESS;
     }

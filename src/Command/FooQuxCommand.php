@@ -18,7 +18,7 @@ final class FooQuxCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln('Hello World');
+        $output->writeln('Foo Qux');
 
         return Command::SUCCESS;
     }
