@@ -33,7 +33,7 @@ final class CreateUserCommand  extends Command
         $question = new Question("<question>Please enter your password:</question> ");
         $question->setValidator(function ($value) {
             if ($value == null || $value == '') {
-                throw new \Exception("<error>The password cannot be empty</error>");
+                throw new \Exception("The password cannot be empty");
             }
 
             return $value;
@@ -53,7 +53,7 @@ final class CreateUserCommand  extends Command
         $gender = $questionHelper->ask($input, $output, $question);
 
         $cities = ['Osijek', 'Zagreb', 'Split', 'Rijeka'];
-        $question = new Question("<question>Please enter user city:</question> ", 'Zagreb');
+        $question = new Question("<question>Please enter user city:</question> ", 'Osijek');
         $question->setAutocompleterValues($cities);
 
         $city = $questionHelper->ask($input, $output, $question);
@@ -61,14 +61,14 @@ final class CreateUserCommand  extends Command
         $question = new ConfirmationQuestion("Continue with user creation? [<info>y</info>/<comment>N</comment>] ", false);
 
         if (!$questionHelper->ask($input, $output, $question)) {
-            $errorMessages = ['', 'User not created', ''];
+            $message = ['', 'User not created', ''];
             $style = 'error';
         } else {
-            $errorMessages = ['', 'Success!', 'User created', ''];
+            $message = ['', 'Success!', 'User created', ''];
             $style = 'info';
         }
 
-        $formattedBlock = $formatter->formatBlock($errorMessages, $style);
+        $formattedBlock = $formatter->formatBlock($message, $style);
         $output->writeln($formattedBlock);
 
         if ($output->isVerbose()) {

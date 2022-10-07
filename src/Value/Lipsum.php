@@ -6,7 +6,7 @@ namespace App\Value;
 
 final class Lipsum
 {
-    private $words = [
+    private array $words = [
         'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit',
         'a', 'ac', 'accumsan', 'ad', 'aenean', 'aliquam', 'aliquet', 'ante',
         'aptent', 'arcu', 'at', 'auctor', 'augue', 'bibendum', 'blandit',
